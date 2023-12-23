@@ -1,0 +1,28 @@
+@extends('base.base')
+
+@section('content')
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Register</h1>
+</div>
+
+<form class="" method="POST" action="{{ route('register.store') }}">
+    @csrf
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" placeholder="Enter your name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" name="phone" class="form-control" placeholder="Enter your phone number">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="....">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+
+</form>
+
+@endsection
