@@ -3,15 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sit;
+use App\Models\Trip;
 use App\Models\BookTicket;
 
 use Illuminate\Http\Request;
 
 class SitController extends Controller
 {
-    public function showSit()
+    public function showSit($id)
     {
-        $sits = Sit::all();
+        //$sits = Sit::all();
+        //$sits = Sit::where('trip_id', $id->id)->get();
+        //$sits = $id->sits;
+        // $sits = Sit::whereHas('trip', function ($query) use ($trip) {
+        //     $query->where('id', $trip->id);
+        // })->get();
+        //return view('sits.showSits', compact('sits'));
+        //return $sits;
+        //$trip = Trip::with('sits')->find($id->id);
+
+        // Check if the sits are loaded
+        // if ($trip->sits->isEmpty()) {
+        //     return "No sits found for this trip.";
+        // }
+        $sits = Sit::where('trip_id', $id)->get();
         return view('sits.showSits', compact('sits'));
         //return $sits;
     }

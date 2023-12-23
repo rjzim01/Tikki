@@ -16,7 +16,16 @@
     <div class="col-xl-4 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
-                <a href=" {{ route('sits') }} " class="text-decoration-none text-reset">
+                @php
+                    $current_time = time(); 
+                    $departure_time = strtotime($trip->departure); 
+                @endphp
+                @if ($current_time < $departure_time)
+                    <a href="{{ route('sits', ['trip' => $trip->id]) }}" class="text-decoration-none text-reset">
+                @else
+                    <a href="{{ route('trips') }}" class="text-decoration-none text-reset">
+                @endif
+                {{-- <a href=" {{ route('sits') }} " class="text-decoration-none text-reset"> --}}
                     <div class="row no-gutters align-items-center">
                         <div class="col col-auto">
                             <div class="text-xss font-weight-bold text-primary text-uppercase mb-1">

@@ -12,8 +12,10 @@ return new class extends Migration {
     {
         Schema::create('sits', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('trip_id');
             $table->foreign('trip_id')->references('id')->on('trips');
+
             $table->string('sit_number');
             $table->string('sit_status')->default('A');
             $table->timestamps();

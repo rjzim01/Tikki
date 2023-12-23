@@ -21,4 +21,6 @@
 
 </form>
 
+<a href="{{ route('register') }}" class="text-decoration-none text-reset" style="margin: 2px">Not Register?</a>
+
 @endsection
