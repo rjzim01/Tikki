@@ -26,6 +26,8 @@
                             {{ $sit->sit_number }}
                             <br>
                             {{ $sit->sit_status }}
+                            {{-- <br>
+                            {{ $sit->trip_id }} --}}
                         </div>
                     </div>
                 </a>

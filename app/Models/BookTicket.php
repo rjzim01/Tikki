@@ -13,4 +13,8 @@ class BookTicket extends Model
     {
         return $this->belongsTo(Trip::class, 'trip_id');
     }
+    public function sit()
+    {
+        return $this->belongsTo(Sit::class, 'sit_id');
+    }
 }

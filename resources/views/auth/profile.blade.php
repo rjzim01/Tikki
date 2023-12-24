@@ -14,8 +14,10 @@
     <ul>
         @foreach ($user->bookTickets as $ticket)
             <li>
-                {{-- Ticket ID: {{ $ticket->id }} - Trip ID: {{ $ticket->trip_id }} - Sit ID: {{ $ticket->sit_id }} --}}
-                Sit NO: {{ $ticket->sit_id }} ||
+                Trip ID: {{ $ticket->trip_id }} || Sit Number: {{ $ticket->sit->sit_number }} ||
+                {{-- Trip ID: {{ $ticket->trip_id }} <br> --}}
+                {{-- Sit Number: {{ $ticket->sit->sit_number }} <br> --}}
+                {{-- <hr> --}}
                 <!-- Access trip information -->
                 @if ($ticket->trip)
                     Trip Name: {{ $ticket->trip->from }} - {{ $ticket->trip->to }} ||

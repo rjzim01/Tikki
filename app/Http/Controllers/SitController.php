@@ -12,32 +12,26 @@ class SitController extends Controller
 {
     public function showSit($id)
     {
-        //$sits = Sit::all();
-        //$sits = Sit::where('trip_id', $id->id)->get();
-        //$sits = $id->sits;
-        // $sits = Sit::whereHas('trip', function ($query) use ($trip) {
-        //     $query->where('id', $trip->id);
-        // })->get();
-        //return view('sits.showSits', compact('sits'));
-        //return $sits;
-        //$trip = Trip::with('sits')->find($id->id);
-
-        // Check if the sits are loaded
-        // if ($trip->sits->isEmpty()) {
-        //     return "No sits found for this trip.";
-        // }
         $sits = Sit::where('trip_id', $id)->get();
         return view('sits.showSits', compact('sits'));
         //return $sits;
     }
-    public function updateSit(Sit $sit)
+    public function updateSit($sitId, $tripId)
     {
-        return view('sits.updateSit', compact('sit'));
+        //return view('sits.updateSit', compact('sit'));
+        //return $trip;
+        $sit = Sit::where('sit_number', $sitId)
+            ->where('trip_id', $tripId)
+            ->first();
         //return $sit;
+        return view('sits.updateSit', compact('sit'));
     }
-    public function updateSitStore(Sit $sit, Request $request)
+    public function updateSitStore($sitId, $tripId, Request $request)
     {
         $userId = $request->user()->id;
+        $sit = Sit::where('sit_number', $sitId)
+            ->where('trip_id', $tripId)
+            ->first();
 
         $sit->update([
             'sit_status' => 'B',

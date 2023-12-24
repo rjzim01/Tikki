@@ -69,9 +69,13 @@ class UserController extends Controller
     {
         //$user = User::find(Auth::id());
         //return view('auth.profile', compact('user'));
-        $user = User::with('bookTickets.trip')->find(Auth::id());
+        //$user = User::with('bookTickets.trip')->find(Auth::id());
+        //return view('auth.profile', compact('user'));
+        ///return $user;
+        $user = User::with(['bookTickets.trip', 'bookTickets.sit:id,sit_number'])
+            ->find(Auth::id());
+
         return view('auth.profile', compact('user'));
-        //return $user;
     }
 
     public function showCalendar()

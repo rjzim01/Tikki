@@ -16,7 +16,7 @@ Route::post('/trip', [TripController::class, 'store'])->name('trip.store');
 Route::get('/sits/{trip}', [SitController::class, 'showSit'])->name('sits');
 
 Route::get('/sits/{sit}/{trip}/update', [SitController::class, 'updateSit'])->name('sits.update');
-Route::post('/sits/{sit}/update', [SitController::class, 'updateSitStore'])->name('sits.updateStore');
+Route::post('/sits/{sit}/{trip}/update', [SitController::class, 'updateSitStore'])->name('sits.updateStore');
 
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register', [UserController::class, 'registerStore'])->name('register.store');
