@@ -10,13 +10,18 @@ Route::get('/', [TripController::class, 'show'])->name('home');
 
 Route::get('/trips', [TripController::class, 'show'])->name('trips');
 
-Route::get('/trip', [TripController::class, 'form'])->name('trip.add');
-Route::post('/trip', [TripController::class, 'store'])->name('trip.store');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/trip', [TripController::class, 'form'])->name('trip.add');
+    Route::post('/trip', [TripController::class, 'store'])->name('trip.store');
+});
 
 Route::get('/sits/{trip}', [SitController::class, 'showSit'])->name('sits');
 
-Route::get('/sits/{sit}/{trip}/update', [SitController::class, 'updateSit'])->name('sits.update');
-Route::post('/sits/{sit}/{trip}/update', [SitController::class, 'updateSitStore'])->name('sits.updateStore');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/sits/{sit}/{trip}/update', [SitController::class, 'updateSit'])->name('sits.update');
+    Route::post('/sits/{sit}/{trip}/update', [SitController::class, 'updateSitStore'])->name('sits.updateStore');
+});
+//Route::resource('/sits', SitController::class)->parameters(['sits' => 'sit'])->except(['edit', 'destroy']);
 
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register', [UserController::class, 'registerStore'])->name('register.store');

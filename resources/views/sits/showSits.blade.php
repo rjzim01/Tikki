@@ -20,7 +20,7 @@
                 @else
                     <a href="{{ route('login') }}" class="text-decoration-none text-reset">
                 @endauth
-                {{-- <a href="{{ route('sits.update', ['sit' => $sit->sit_number]) }}" class="text-decoration-none text-reset"> --}}
+                {{-- <a href="{{ route('sits.update', ['sit' => $sit->sit_number, 'trip' => $sit->trip_id]) }}" class="text-decoration-none text-reset"> --}}
                     <div class="row no-gutters align-items-center">
                         <div>
                             {{ $sit->sit_number }}
